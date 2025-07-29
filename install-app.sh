@@ -11,7 +11,7 @@ apt-get update -yq
 apt-get install python3-pip -yq
 
 sudo apt install dos2unix
-dos2unix /app/start.sh
+
 
 # Create a directory for the app and download the files.
 mkdir /app 
@@ -21,6 +21,9 @@ cp -r azure_task_12_deploy_app_with_vm_extention/app/* /app
 
 # create a service for the app via systemctl and start the app
 mv /app/todoapp.service /etc/systemd/system/
+chmod +x /app/start.sh
+dos2unix /app/start.sh
+
 systemctl daemon-reload
 systemctl start todoapp
 systemctl enable todoapp
